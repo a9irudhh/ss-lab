@@ -1,0 +1,42 @@
+pass 1
+begin
+	if opcode = 'START' then
+		save #[OPERAND} as start address
+		initialize LOCCTR to start address
+		write line to intermediate file
+		read next input line
+	else 
+		initialize LOCCTR to 0
+		
+	// actual algorithm starts here
+	while OPCODE != 'END' do
+		if there is a SYMBOL in the LABEL field then
+			search SYMTAB for LABEL
+			if found then 
+				set error flag (duplicate symbol)
+			else 
+				insert (LABEL, LOCCTR) into SYMTAB
+			
+		search OPTAB for OPCODE
+		if found then 
+			add 3 to LOCCTR // not necessarily
+		else if OPCODE = RESW then
+			add 3*[OPERAND] to LOCCTR
+		else if OPCODE = RESB
+			add [OPERAND] to LOCCTR
+		else if OPCODE = WORD then
+			add 3 to LOCCTR
+		else if OPCODE = BYTE
+			find length of constants in BYTES
+			add length to LOCCTR
+		else 
+			invalid OPCODE
+		
+		write line to intermediate file
+		read next input line
+	end {WHILE NOT END}
+	write last line to intermediate file
+	save (LOCCTR - Start Address) as program length
+end {PASS 1}
+		
+		

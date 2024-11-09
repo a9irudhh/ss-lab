@@ -1,0 +1,6 @@
+INFO : System boot successfull
+ERROR : Unable to connect to the server 
+INFO : User login successfull
+WARNING : Low memory
+ERROR : Timeout while fetching the data
+INFO : Backup process completed

@@ -1,0 +1,2 @@
+Explore all the string related functions, array of structures
+Be familiar about searching operation, Implement hash table (to improve efficiency) insertion and searching
